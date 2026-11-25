@@ -46,6 +46,8 @@ a { text-decoration: none; color: inherit; }
   margin: auto;
 }
 
+/* HEADER */
+
 header {
   background: white;
   position: sticky;
@@ -111,6 +113,7 @@ header {
   transition: .3s;
   border: none;
   cursor: pointer;
+  font-family: inherit;
 }
 
 .btn-primary {
@@ -142,20 +145,28 @@ header {
   cursor: pointer;
 }
 
-/* HERO */
+/* PREMIUM HERO SECTION */
 
 .hero {
-  background: linear-gradient(110deg, #062951 0%, #07519a 65%, #168bd3 100%);
+  background:
+    radial-gradient(circle at 80% 20%, rgba(53,168,237,.25), transparent 35%),
+    linear-gradient(120deg, #041f40 0%, #073b78 55%, #0877bd 100%);
   color: white;
-  padding: 95px 0 100px;
+  padding: 105px 0 115px;
+  position: relative;
   overflow: hidden;
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.05fr .95fr;
-  gap: 50px;
+  grid-template-columns: 1fr 1fr;
+  gap: 65px;
   align-items: center;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
 }
 
 .eyebrow {
@@ -172,18 +183,20 @@ header {
 
 .hero h1 {
   font-family: 'Manrope', sans-serif;
-  font-size: clamp(39px, 5vw, 63px);
-  line-height: 1.12;
-  letter-spacing: -2px;
-  margin-bottom: 22px;
+  font-size: clamp(45px, 5.5vw, 70px);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -3px;
+  margin-bottom: 25px;
 }
 
 .hero h1 span { color: var(--yellow); }
 
 .hero p {
-  color: #d7e9fa;
-  max-width: 510px;
+  color: #d9eaff;
+  max-width: 490px;
   font-size: 16px;
+  line-height: 1.9;
   margin-bottom: 30px;
 }
 
@@ -191,6 +204,7 @@ header {
   display: flex;
   flex-wrap: wrap;
   gap: 13px;
+  margin-bottom: 32px;
 }
 
 .btn-outline {
@@ -198,30 +212,88 @@ header {
   color: white;
 }
 
-.btn-outline:hover { background: rgba(255,255,255,.1); }
+.btn-outline:hover {
+  background: rgba(255,255,255,.1);
+}
+
+.hero-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.hero-points span::first-letter {
+  color: var(--yellow);
+}
+
+.hero-visual {
+  position: relative;
+  padding: 12px 10px 35px;
+}
 
 .hero-image {
   position: relative;
+  z-index: 2;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 30px 65px rgba(0,0,0,.28);
+  border: 5px solid rgba(255,255,255,.12);
 }
 
 .hero-image img {
+  display: block;
   width: 100%;
-  height: 410px;
+  height: 440px;
   object-fit: cover;
-  border-radius: 20px;
-  box-shadow: 0 25px 60px rgba(0,0,0,.25);
 }
 
-.image-tag {
+.floating-card {
   position: absolute;
-  bottom: 20px;
-  left: -22px;
+  z-index: 3;
+  bottom: 0;
+  left: -25px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 19px 22px;
   background: white;
-  color: var(--blue);
-  padding: 16px 20px;
+  color: var(--dark);
+  border-radius: 15px;
+  box-shadow: 0 15px 40px rgba(0,0,0,.18);
+}
+
+.floating-icon {
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
   border-radius: 12px;
-  font-weight: 800;
-  box-shadow: 0 8px 25px rgba(0,0,0,.15);
+  background: var(--light);
+  color: #0877bd;
+  font-size: 24px;
+}
+
+.floating-card strong { font-size: 13px; }
+
+.floating-card p {
+  color: var(--muted);
+  font-size: 11px;
+  margin: 3px 0 0;
+  line-height: 1.5;
+}
+
+.hero-decoration {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border: 2px solid rgba(255,212,59,.5);
+  border-radius: 50%;
+  right: -45px;
+  top: -30px;
+  z-index: 1;
 }
 
 /* INTRO STRIP */
@@ -492,7 +564,10 @@ section { padding: 90px 0; }
   margin-bottom: 12px;
 }
 
-.contact-info > p { color: var(--muted); margin-bottom: 25px; }
+.contact-info > p {
+  color: var(--muted);
+  margin-bottom: 25px;
+}
 
 .contact-detail {
   display: flex;
@@ -512,8 +587,15 @@ section { padding: 90px 0; }
   flex-shrink: 0;
 }
 
-.contact-detail strong { display: block; color: var(--dark); }
-.contact-detail p { color: var(--muted); font-size: 14px; }
+.contact-detail strong {
+  display: block;
+  color: var(--dark);
+}
+
+.contact-detail p {
+  color: var(--muted);
+  font-size: 14px;
+}
 
 .contact-box {
   background: #f5faff;
@@ -527,7 +609,10 @@ section { padding: 90px 0; }
   font-size: 23px;
 }
 
-.contact-box p { color: var(--muted); margin-bottom: 23px; }
+.contact-box p {
+  color: var(--muted);
+  margin-bottom: 23px;
+}
 
 .contact-box input,
 .contact-box textarea {
@@ -541,9 +626,14 @@ section { padding: 90px 0; }
 }
 
 .contact-box input:focus,
-.contact-box textarea:focus { border-color: var(--sky); }
+.contact-box textarea:focus {
+  border-color: var(--sky);
+}
 
-.contact-box textarea { min-height: 120px; resize: vertical; }
+.contact-box textarea {
+  min-height: 120px;
+  resize: vertical;
+}
 
 /* FOOTER */
 
@@ -561,9 +651,17 @@ footer {
 }
 
 footer h3 { margin-bottom: 15px; }
-footer p, footer li { color: #b4c7da; font-size: 14px; }
+
+footer p,
+footer li {
+  color: #b4c7da;
+  font-size: 14px;
+}
+
 footer ul { list-style: none; }
+
 footer li { margin: 9px 0; }
+
 footer a:hover { color: var(--yellow); }
 
 .footer-bottom {
@@ -574,7 +672,7 @@ footer a:hover { color: var(--yellow); }
   font-size: 12px;
 }
 
-/* WHATSAPP */
+/* WHATSAPP BUTTON */
 
 .whatsapp {
   position: fixed;
@@ -592,9 +690,10 @@ footer a:hover { color: var(--yellow); }
   box-shadow: 0 5px 20px rgba(0,0,0,.2);
 }
 
-/* RESPONSIVE */
+/* TABLET RESPONSIVENESS */
 
-@media(max-width: 850px) {
+@media(max-width:850px) {
+
   .nav-links {
     display: none;
     position: absolute;
@@ -609,29 +708,77 @@ footer a:hover { color: var(--yellow); }
   }
 
   .nav-links.active { display: flex; }
+
   .menu-toggle { display: block; }
 
-  .hero-grid, .about-grid, .why-grid, .contact-grid {
+  .hero {
+    padding: 75px 0 90px;
+  }
+
+  .hero-grid,
+  .about-grid,
+  .why-grid,
+  .contact-grid {
     grid-template-columns: 1fr;
   }
 
-  .hero { padding: 70px 0; }
-  .hero-image img { height: 350px; }
-  .image-tag { left: 10px; }
-  .services-grid { grid-template-columns: repeat(2,1fr); }
+  .hero-grid { gap: 40px; }
+
+  .hero-visual {
+    max-width: 600px;
+    margin: auto;
+    width: 100%;
+  }
+
+  .hero-image img { height: 370px; }
+
   .about-image img { height: 350px; }
+
+  .services-grid { grid-template-columns: repeat(2,1fr); }
 }
 
-@media(max-width: 560px) {
+/* MOBILE RESPONSIVENESS */
+
+@media(max-width:560px) {
+
   section { padding: 70px 0; }
-  .services-grid, .strip-grid, .process-grid, .footer-grid {
+
+  .hero {
+    padding: 65px 0 85px;
+  }
+
+  .hero h1 {
+    font-size: 47px;
+    letter-spacing: -2px;
+  }
+
+  .hero-points {
+    gap: 12px;
+    font-size: 11px;
+  }
+
+  .hero-image img { height: 290px; }
+
+  .floating-card {
+    left: 0;
+    padding: 13px;
+  }
+
+  .floating-card strong { font-size: 11px; }
+
+  .services-grid,
+  .strip-grid,
+  .process-grid,
+  .footer-grid {
     grid-template-columns: 1fr;
   }
+
   .strip-item { justify-content: flex-start; }
+
   .why-cards { grid-template-columns: 1fr 1fr; }
-  .hero h1 { letter-spacing: -1px; }
-  .hero-image img { height: 280px; }
+
   .contact-box { padding: 24px 18px; }
+
   .logo { font-size: 17px; }
 }
 </style>
@@ -639,16 +786,22 @@ footer a:hover { color: var(--yellow); }
 
 <body>
 
+<!-- HEADER -->
+
 <header>
   <div class="container navbar">
+
     <a href="#" class="logo">
       <span class="logo-icon">KPK</span>
-      <span>KPK CLEANING
+      <span>
+        KPK CLEANING
         <small>& LAUNDRY SERVICES</small>
       </span>
     </a>
 
-    <button class="menu-toggle" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+    <button class="menu-toggle"
+      aria-label="Open menu"
+      onclick="toggleMenu()">☰</button>
 
     <nav class="nav-links" id="navLinks">
       <a href="#home">Home</a>
@@ -656,70 +809,135 @@ footer a:hover { color: var(--yellow); }
       <a href="#services">Services</a>
       <a href="#why-us">Why Choose Us</a>
       <a href="#contact">Contact</a>
-      <a class="btn btn-blue" href="https://wa.me/2348069787895">Book a Service</a>
+      <a class="btn btn-blue"
+         href="https://wa.me/2348069787895">Book a Service</a>
     </nav>
+
   </div>
 </header>
 
 <main>
 
+<!-- PREMIUM HERO SECTION -->
+
 <section class="hero" id="home">
+
   <div class="container hero-grid">
-    <div>
-      <span class="eyebrow">YOUR TRUSTED LAUNDRY PARTNER</span>
-      <h1>Fresh Clothes.<br>Fresh Confidence.<br><span>Every Time.</span></h1>
+
+    <div class="hero-content">
+
+      <span class="eyebrow">
+        ✦ YOUR CLOTHES DESERVE THE BEST
+      </span>
+
+      <h1>
+        Laundry Care,<br>
+        Made <span>Effortless.</span>
+      </h1>
+
       <p>
-        Take the stress out of laundry. From professional washing
-        and ironing to drying and convenient pickup and delivery,
-        KPK makes caring for your clothes easier.
+        From everyday washing to perfectly pressed outfits,
+        enjoy convenient laundry care that gives you more
+        time for the things that matter.
       </p>
+
       <div class="hero-actions">
+
         <a href="https://wa.me/2348069787895?text=Hello%20KPK%2C%20I%20would%20like%20to%20book%20a%20laundry%20service."
-           class="btn btn-primary">Book Your Laundry ↗</a>
-        <a href="#services" class="btn btn-outline">Explore Services</a>
+           class="btn btn-primary">
+          Book a Laundry Service →
+        </a>
+
+        <a href="#services" class="btn btn-outline">
+          Explore Our Services
+        </a>
+
       </div>
+
+      <div class="hero-points">
+        <span>✓ Washing</span>
+        <span>✓ Ironing</span>
+        <span>✓ Pickup & Delivery</span>
+      </div>
+
     </div>
 
-    <div class="hero-image">
-      <img src="https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?auto=format&fit=crop&w=1100&q=85"
-           alt="Freshly cleaned laundry">
-      <div class="image-tag">✦ Care for Every Fabric</div>
+    <div class="hero-visual">
+
+      <div class="hero-image">
+        <img
+          src="https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?auto=format&fit=crop&w=1200&q=90"
+          alt="Fresh laundry being professionally cared for">
+      </div>
+
+      <div class="floating-card">
+
+        <div class="floating-icon">✦</div>
+
+        <div>
+          <strong>Freshness You Can Feel</strong>
+          <p>Making laundry easier every day.</p>
+        </div>
+
+      </div>
+
+      <div class="hero-decoration"></div>
+
     </div>
+
   </div>
+
 </section>
 
+<!-- INTRO STRIP -->
+
 <div class="features-strip">
+
   <div class="container strip-grid">
+
     <div class="strip-item">
       <span class="strip-icon">🧺</span>
       <span>Professional Washing</span>
     </div>
+
     <div class="strip-item">
       <span class="strip-icon">✨</span>
       <span>Neat Ironing & Finishing</span>
     </div>
+
     <div class="strip-item">
       <span class="strip-icon">🚚</span>
       <span>Pickup & Delivery</span>
     </div>
+
   </div>
+
 </div>
 
+<!-- ABOUT SECTION -->
+
 <section id="about">
+
   <div class="container about-grid">
+
     <div class="about-image">
-      <img src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f?auto=format&fit=crop&w=1000&q=85"
-           alt="Clean folded laundry">
+      <img
+        src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f?auto=format&fit=crop&w=1000&q=85"
+        alt="Clean folded laundry">
     </div>
 
     <div class="about-content">
+
       <span class="section-label">ABOUT KPK</span>
+
       <h2>Making Laundry Day Easier for You</h2>
+
       <p>
         At KPK Cleaning & Laundry Services, we understand that
         keeping your clothes clean and presentable takes time.
         That's why we're here to make laundry care more convenient.
       </p>
+
       <p>
         Whether you need your everyday clothes washed, neatly
         ironed or properly dried, we're ready to help take the
@@ -733,254 +951,457 @@ footer a:hover { color: var(--yellow); }
         <li><span>✓</span> Easy WhatsApp enquiries and bookings</li>
       </ul>
 
-      <a href="#contact" class="btn btn-blue">Get in Touch ↗</a>
+      <a href="#contact" class="btn btn-blue">
+        Get in Touch ↗
+      </a>
+
     </div>
+
   </div>
+
 </section>
 
+<!-- SERVICES SECTION -->
+
 <section class="services-section" id="services">
+
   <div class="container">
+
     <div class="section-heading">
+
       <span class="section-label">WHAT WE DO</span>
+
       <h2>Our Laundry Services</h2>
-      <p>Everything you need to keep your clothes clean, fresh and ready to wear.</p>
+
+      <p>
+        Everything you need to keep your clothes clean,
+        fresh and ready to wear.
+      </p>
+
     </div>
 
     <div class="services-grid">
+
       <article class="service-card">
         <div class="service-icon">🧺</div>
         <h3>Professional Washing</h3>
-        <p>Give your clothes the cleaning care they need with our washing service.</p>
+        <p>
+          Give your clothes the cleaning care they need
+          with our washing service.
+        </p>
       </article>
 
       <article class="service-card">
         <div class="service-icon">👔</div>
         <h3>Expert Ironing</h3>
-        <p>Keep your outfits looking neat, smooth and presentable.</p>
+        <p>
+          Keep your outfits looking neat, smooth
+          and presentable.
+        </p>
       </article>
 
       <article class="service-card">
         <div class="service-icon">🌬️</div>
         <h3>Clothes Drying</h3>
-        <p>Get your laundry properly dried and ready for the next step.</p>
+        <p>
+          Get your laundry properly dried and ready
+          for the next step.
+        </p>
       </article>
 
       <article class="service-card">
         <div class="service-icon">🚚</div>
         <h3>Pickup Services</h3>
-        <p>Enjoy added convenience with our available laundry pickup option.</p>
+        <p>
+          Enjoy added convenience with our available
+          laundry pickup option.
+        </p>
       </article>
 
       <article class="service-card">
         <div class="service-icon">📦</div>
         <h3>Delivery Services</h3>
-        <p>Arrange delivery of your laundry through our pickup and delivery service.</p>
+        <p>
+          Arrange delivery of your laundry through
+          our pickup and delivery service.
+        </p>
       </article>
 
       <article class="service-card">
         <div class="service-icon">✨</div>
         <h3>Laundry Care</h3>
-        <p>Let us help you take better care of your everyday clothing.</p>
+        <p>
+          Let us help you take better care of
+          your everyday clothing.
+        </p>
       </article>
+
     </div>
+
   </div>
+
 </section>
 
+<!-- WHY CHOOSE US -->
+
 <section class="why-section" id="why-us">
+
   <div class="container why-grid">
+
     <div>
-      <span class="section-label" style="color:#ffd43b">THE KPK DIFFERENCE</span>
-      <h2>More Convenience.<br>Less Laundry Stress.</h2>
+
+      <span class="section-label" style="color:#ffd43b">
+        THE KPK DIFFERENCE
+      </span>
+
+      <h2>
+        More Convenience.<br>
+        Less Laundry Stress.
+      </h2>
+
       <p>
         Your time matters. KPK Cleaning & Laundry Services
         provides convenient laundry solutions designed to
         make your daily routine easier.
       </p>
+
       <br>
-      <a href="https://wa.me/2348069787895" class="btn btn-primary">Chat With Us ↗</a>
+
+      <a href="https://wa.me/2348069787895"
+         class="btn btn-primary">
+        Chat With Us ↗
+      </a>
+
     </div>
 
     <div class="why-cards">
+
       <div class="why-card">
         <span>🧺</span>
         <h3>Multiple Services</h3>
         <p>Washing, ironing and drying in one place.</p>
       </div>
+
       <div class="why-card">
         <span>🚚</span>
         <h3>Added Convenience</h3>
         <p>Pickup and delivery options for customers.</p>
       </div>
+
       <div class="why-card">
         <span>📍</span>
         <h3>Local Service</h3>
         <p>Serving customers around Oye-Ekiti.</p>
       </div>
+
       <div class="why-card">
         <span>💬</span>
         <h3>Easy Booking</h3>
         <p>Reach us directly through WhatsApp.</p>
       </div>
+
     </div>
+
   </div>
+
 </section>
 
+<!-- HOW IT WORKS -->
+
 <section id="process">
+
   <div class="container">
+
     <div class="section-heading">
+
       <span class="section-label">SIMPLE & CONVENIENT</span>
+
       <h2>How It Works</h2>
+
       <p>Getting started with KPK is simple.</p>
+
     </div>
 
     <div class="process-grid">
+
       <div class="process-card">
         <div class="step">01</div>
         <h3>Contact Us</h3>
-        <p>Send us a WhatsApp message to enquire about the service you need.</p>
+        <p>
+          Send us a WhatsApp message to enquire
+          about the service you need.
+        </p>
       </div>
 
       <div class="process-card">
         <div class="step">02</div>
         <h3>Arrange Your Laundry</h3>
-        <p>Discuss your laundry needs and arrange the available service.</p>
+        <p>
+          Discuss your laundry needs and arrange
+          the available service.
+        </p>
       </div>
 
       <div class="process-card">
         <div class="step">03</div>
         <h3>Enjoy the Convenience</h3>
-        <p>Let KPK help you take care of your laundry needs.</p>
+        <p>
+          Let KPK help you take care of your
+          laundry needs.
+        </p>
       </div>
+
     </div>
+
   </div>
+
 </section>
+
+<!-- CALL TO ACTION -->
 
 <section class="cta">
+
   <div class="container">
+
     <h2>Ready to Make Laundry Easier?</h2>
-    <p>Get in touch with KPK Cleaning & Laundry Services today.</p>
+
+    <p>
+      Get in touch with KPK Cleaning & Laundry Services today.
+    </p>
+
     <a href="https://wa.me/2348069787895?text=Hello%20KPK%2C%20I%20would%20like%20to%20make%20an%20enquiry."
-       class="btn btn-primary">Start a Conversation ↗</a>
+       class="btn btn-primary">
+      Start a Conversation ↗
+    </a>
+
   </div>
+
 </section>
 
+<!-- CONTACT SECTION -->
+
 <section id="contact">
+
   <div class="container">
+
     <div class="section-heading">
+
       <span class="section-label">CONTACT US</span>
+
       <h2>Let's Take Care of Your Laundry</h2>
-      <p>Have a question or need a laundry service? We're just a message away.</p>
+
+      <p>
+        Have a question or need a laundry service?
+        We're just a message away.
+      </p>
+
     </div>
 
     <div class="contact-grid">
+
       <div class="contact-info">
+
         <h3>Get in Touch</h3>
-        <p>Reach out to us through any of our contact channels.</p>
+
+        <p>
+          Reach out to us through any of our contact channels.
+        </p>
 
         <div class="contact-detail">
+
           <span class="symbol">📍</span>
+
           <div>
             <strong>Our Location</strong>
-            <p>Araromi Street, Along MFM, Oye-Ekiti, Ekiti State, Nigeria.</p>
+            <p>
+              Araromi Street, Along MFM, Oye-Ekiti,
+              Ekiti State, Nigeria.
+            </p>
           </div>
+
         </div>
 
         <div class="contact-detail">
+
           <span class="symbol">📞</span>
+
           <div>
             <strong>Phone / WhatsApp</strong>
-            <p><a href="tel:+2348069787895">08069787895</a></p>
+            <p>
+              <a href="tel:+2348069787895">
+                08069787895
+              </a>
+            </p>
           </div>
+
         </div>
 
         <div class="contact-detail">
+
           <span class="symbol">☎️</span>
+
           <div>
             <strong>Alternative Contact</strong>
-            <p><a href="tel:+2348132507038">08132507038</a></p>
+            <p>
+              <a href="tel:+2348132507038">
+                08132507038
+              </a>
+            </p>
           </div>
+
         </div>
+
       </div>
 
       <div class="contact-box">
+
         <h3>Send Us an Enquiry</h3>
-        <p>Fill in your details and we'll connect you to WhatsApp.</p>
+
+        <p>
+          Fill in your details and we'll connect you to WhatsApp.
+        </p>
 
         <form id="bookingForm">
-          <input type="text" id="customerName" placeholder="Your full name" required>
-          <input type="tel" id="customerPhone" placeholder="Your phone number" required>
-          <textarea id="customerMessage" placeholder="Tell us about the laundry service you need..." required></textarea>
-          <button type="submit" class="btn btn-blue" style="width:100%">
+
+          <input
+            type="text"
+            id="customerName"
+            placeholder="Your full name"
+            required>
+
+          <input
+            type="tel"
+            id="customerPhone"
+            placeholder="Your phone number"
+            required>
+
+          <textarea
+            id="customerMessage"
+            placeholder="Tell us about the laundry service you need..."
+            required></textarea>
+
+          <button
+            type="submit"
+            class="btn btn-blue"
+            style="width:100%">
             Send Enquiry via WhatsApp ↗
           </button>
+
         </form>
+
       </div>
+
     </div>
+
   </div>
+
 </section>
 
 </main>
 
+<!-- FOOTER -->
+
 <footer>
+
   <div class="container">
+
     <div class="footer-grid">
+
       <div>
         <h3>KPK Cleaning & Laundry Services</h3>
-        <p>Making laundry care easier through washing, ironing, drying and convenient pickup and delivery services.</p>
+        <p>
+          Making laundry care easier through washing,
+          ironing, drying and convenient pickup and
+          delivery services.
+        </p>
       </div>
 
       <div>
+
         <h3>Quick Links</h3>
+
         <ul>
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About Us</a></li>
           <li><a href="#services">Our Services</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
+
       </div>
 
       <div>
+
         <h3>Contact</h3>
+
         <ul>
           <li>Oye-Ekiti, Ekiti State</li>
-          <li><a href="tel:+2348069787895">08069787895</a></li>
-          <li><a href="tel:+2348132507038">08132507038</a></li>
+          <li>
+            <a href="tel:+2348069787895">08069787895</a>
+          </li>
+          <li>
+            <a href="tel:+2348132507038">08132507038</a>
+          </li>
         </ul>
+
       </div>
+
     </div>
 
     <div class="footer-bottom">
-      © <span id="year"></span> KPK Cleaning & Laundry Services. All Rights Reserved.
+      © <span id="year"></span>
+      KPK Cleaning & Laundry Services. All Rights Reserved.
     </div>
+
   </div>
+
 </footer>
+
+<!-- FLOATING WHATSAPP BUTTON -->
 
 <a class="whatsapp"
    href="https://wa.me/2348069787895"
    target="_blank"
+   rel="noopener noreferrer"
    aria-label="Chat with KPK on WhatsApp">✆</a>
 
 <script>
+
+/* MOBILE NAVIGATION */
+
 function toggleMenu() {
-  document.getElementById('navLinks').classList.toggle('active');
+  document.getElementById('navLinks')
+    .classList.toggle('active');
 }
 
 document.querySelectorAll('.nav-links a').forEach(link => {
   link.addEventListener('click', () => {
-    document.getElementById('navLinks').classList.remove('active');
+    document.getElementById('navLinks')
+      .classList.remove('active');
   });
 });
 
-document.getElementById('bookingForm').addEventListener('submit', function(e) {
-  e.preventDefault();
+/* WHATSAPP BOOKING FORM */
 
-  const name = document.getElementById('customerName').value.trim();
-  const phone = document.getElementById('customerPhone').value.trim();
-  const message = document.getElementById('customerMessage').value.trim();
+document.getElementById('bookingForm')
+  .addEventListener('submit', function(e) {
 
-  if (!name || !phone || !message) return;
+    e.preventDefault();
 
-  const text = `Hello KPK Cleaning & Laundry Services!
+    const name = document
+      .getElementById('customerName')
+      .value.trim();
+
+    const phone = document
+      .getElementById('customerPhone')
+      .value.trim();
+
+    const message = document
+      .getElementById('customerMessage')
+      .value.trim();
+
+    if (!name || !phone || !message) return;
+
+    const text = `Hello KPK Cleaning & Laundry Services!
 
 My name is ${name}.
 My phone number is ${phone}.
@@ -988,15 +1409,20 @@ My phone number is ${phone}.
 I would like to make an enquiry:
 ${message}`;
 
-  window.open(
-    'https://wa.me/2348069787895?text=' + encodeURIComponent(text),
-    '_blank'
-  );
-});
+    const whatsappURL =
+      'https://wa.me/2348069787895?text=' +
+      encodeURIComponent(text);
 
-document.getElementById('year').textContent = new Date().getFullYear();
+    window.open(whatsappURL, '_blank');
+
+  });
+
+/* AUTOMATIC COPYRIGHT YEAR */
+
+document.getElementById('year').textContent =
+  new Date().getFullYear();
+
 </script>
 
 </body>
 </html>
-
